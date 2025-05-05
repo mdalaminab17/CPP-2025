@@ -87,7 +87,6 @@ class Teachers: public Person
     }
  
 };
-
 int main()
 {
     int x,y;

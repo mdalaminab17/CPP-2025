@@ -4,7 +4,7 @@ using namespace std;
 class four_seater
 {
     public:
-    void property1()
+    virtual void property()
     {
         cout<<"It has space for four persons" <<endl;   
     }
@@ -13,7 +13,7 @@ class four_seater
 class four_wheeler
 {
     public:
-    void property2()
+   virtual void property()
     {
         cout<<"It runs on four tyres" <<endl;
     }
@@ -24,8 +24,8 @@ class Car : public four_seater, public four_wheeler
     public:
     void display()
     {
-        property1();
-        property2();
+        four_seater::property();
+        four_wheeler::property();
     }
     
 };

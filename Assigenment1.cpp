@@ -98,7 +98,7 @@ class SavingAccount: public Account{
 class CurrentAccount: public Account{
 
     public:
-    
+
     void display1(){
         int a,b;
         cout << "Account Name: " << name <<endl;
@@ -145,7 +145,7 @@ int main()
     //s1.get("Ali", "Saving", 12345);
    // s1.display1();
     CurrentAccount c1;
-    c1.get("RAzz", "Current", 1343);
+    c1.get("Md Al Amin", "Current", 242311049);
     c1.display1();
 
 

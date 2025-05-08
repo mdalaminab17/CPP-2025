@@ -2,7 +2,6 @@
 using namespace std;
 
 class Account{
-    public:
     string name;
     string type;
     int number;
@@ -12,29 +11,40 @@ class Account{
     double depotitAmount;
     double withdrawAmount;
 
-    void get(string n, string t, int a){
+
+    public:
+
+    void post(string n, string t, int a){
         name = n;
         type = t;
         number = a;
 
 
     }
+   void display() {
+
+  
+    cout << "Account Name: " << name <<endl;
+    cout << "Account Type: " << type <<endl;
+    cout << "Account Number: " <<number <<endl;
+    cout << "Balance : " <<balance <<endl;
+}
 
     void deposit(){
         cout << "Enter Deposit Amount" <<endl;
         cin>> depotitAmount;
-        balance = balance + depotitAmount;
+        balance += depotitAmount;
         cout << "Your Balnce is: " << balance <<endl;
     }
     void withdraw(){
-        cout << "Enter Withdraw Ammount: " <<endl;
+        cout << "Enter Withdraw Amount: " <<endl;
         cin>> withdrawAmount;
 
-        balance = balance - withdrawAmount;
-        if (balance < 0){
+        if (withdrawAmount > balance){
             cout << "Insufficient Balance" <<endl;
         }
         else{
+            balance -= withdrawAmount;
             cout << "Your Balance is: " << balance <<endl;
         }
     }
@@ -49,7 +59,7 @@ class Account{
         if (balance < minumum){
             cout << "Your Balance is Less then Minimum Amount " <<endl;
             balance = balance - 50;
-            cout << "Your Balance is: " <<balance <<endl;
+            cout << "Your current Balance is Now: " <<balance <<endl;
         }
 
     }
@@ -60,11 +70,10 @@ class SavingAccount: public Account{
     public:
     int interestRate;
 
-    void display1(){
+    void get(){
+     
+        display();
         int a,b;
-        cout << "Account Name: " << name <<endl;
-        cout << "Account Type: " << type <<endl;
-        cout << "Account Number: " <<number <<endl;
 
         while (true){
         cout << "Enter 1 for Deposit or 2 for withdraw or 3 for Check Interest Balance: " <<endl;
@@ -99,12 +108,10 @@ class CurrentAccount: public Account{
 
     public:
 
-    void display1(){
-        int a,b;
-        cout << "Account Name: " << name <<endl;
-        cout << "Account Type: " << type <<endl;
-        cout << "Account Number: " <<number <<endl;
-        cout << "Balance : " <<balance <<endl;
+    void get(){
+       display();
+
+       int a,b;
 
         while (true){
         cout << "Enter 1 for Deposit or 2 for Withdraw Balance: " <<endl;
@@ -115,9 +122,9 @@ class CurrentAccount: public Account{
         }
         else if (a == 2){
             withdraw();
+            minmumBalance();
         }
-        else if(a ==3){
-        }
+
         else{
             cout<< "Invalid Input: " <<endl;
         }
@@ -132,7 +139,7 @@ class CurrentAccount: public Account{
             continue;
         }
 
-        minmumBalance();
+       
      }
 
     }
@@ -141,12 +148,12 @@ class CurrentAccount: public Account{
 
 int main()
 {
-   // SavingAccount s1;
-    //s1.get("Ali", "Saving", 12345);
-   // s1.display1();
+    SavingAccount s1;
+    s1.post("Ali", "Saving", 12345);
+    s1.get();
     CurrentAccount c1;
-    c1.get("Md Al Amin", "Current", 242311049);
-    c1.display1();
+    c1.post("Md Al Amin", "Current", 242311049);
+    c1.get();
 
 
     return 0;
